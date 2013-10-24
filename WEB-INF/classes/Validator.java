@@ -15,7 +15,7 @@ public class Validator {
   private Connection con;
 
   public Validator() throws SQLException{
-    con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
+    conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
   }
 
   public boolean hasTable() throws SQLException{
@@ -23,7 +23,7 @@ public class Validator {
       boolean product = false;
       boolean client = false;
 
-      DatabaseMetaData meta = con.getMetaData();
+      DatabaseMetaData meta = conn.getMetaData();
       ResultSet res = meta.getTables(null, null, null, new String[] {"TABLE"});
       //out.println("List of tables: "); 
       String fin = "";
@@ -36,7 +36,7 @@ public class Validator {
           client = true;
         }
       }
-
+		conn.close();
       return purchase && product && client;
   }
 }

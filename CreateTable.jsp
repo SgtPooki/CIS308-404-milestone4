@@ -69,3 +69,7 @@
 			<%= template.getSideBarHTML() %>
 	</body>
 </html>
+
+<%
+conn.close();
+%>

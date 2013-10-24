@@ -108,3 +108,7 @@ public class purchase implements Serializable {
 		return output;
 	}
 }
+
+<%
+conn.close();
+%>
