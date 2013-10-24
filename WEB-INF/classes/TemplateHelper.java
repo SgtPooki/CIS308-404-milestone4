@@ -16,7 +16,8 @@ public class TemplateHelper {
 
   public String getSideBarHTML() throws FileNotFoundException, IOException{
 
-    return "<div class=\"sidebar\">" + 
+    return "<link href=\"template.css\" rel=\"stylesheet\">" +
+    "<div class=\"sidebar\">" + 
     "<p><a href=\"index.jsp\" class=\"button\">HOME</a></p><br>" + 
     "<p><a href=\"DisplayData.jsp\" class=\"button\">Display Data</a></p><br>" + 
     "<p><a href=\"FormPost.jsp\" class=\"button\">Place Order</a></p><br>" + 
@@ -24,4 +25,11 @@ public class TemplateHelper {
     "<p><a href=\"NukeDatabase.jsp\" class=\"button\">Delete Data</a></p><br>" + 
     "</div>";
   }
+  
+  public String getImage() throws FileNotFoundException, IOException{
+	  return "<link href=\"template.css\" rel=\"stylesheet\">" +
+			"<div class=\"image\">" +
+    		"<img src=\"Baby.jpg\" alt=\"BABY!\" width=\"400\" height=\"475\">
+			"</div>"
+		}
 }
