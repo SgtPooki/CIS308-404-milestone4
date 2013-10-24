@@ -57,14 +57,6 @@
         		stmt.executeUpdate("DELETE FROM CLIENT");
         		stmt.executeUpdate("DELETE FROM PRODUCT");
 
-				stmt.executeUpdate("DROP SEQUENCE purchaseID");
-				stmt.executeUpdate("DROP SEQUENCE clientID");
-				stmt.executeUpdate("DROP SEQUENCE productID");
-
-				stmt.executeUpdate("CREATE SEQUENCE purchaseID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10");
-				stmt.executeUpdate("CREATE SEQUENCE clientID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10");
-				stmt.executeUpdate("CREATE SEQUENCE productID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10");
-
         		out.println("<p>Table Deleted...</p>");
       		}catch(SQLException e){
         		out.println("<p>Table Deletion Failed!!!</p>" + e);
