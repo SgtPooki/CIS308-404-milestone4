@@ -25,11 +25,4 @@ public class TemplateHelper {
     "<p><a href=\"NukeDatabase.jsp\" class=\"button\">Delete Data</a></p><br>" + 
     "</div>";
   }
-  
-  public String getImage() throws FileNotFoundException, IOException{
-	  return "<link href=\"template.css\" rel=\"stylesheet\">" +
-			"<div class=\"image\">" +
-    		"<img src=\"Baby.jpg\" alt=\"BABY!\" width=\"400\" height=\"475\">
-			"</div>"
-		}
 }
