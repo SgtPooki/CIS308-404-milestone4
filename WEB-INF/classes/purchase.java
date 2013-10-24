@@ -11,16 +11,19 @@ import java.sql.ResultSet;
 
 		//All of the object attributes
 public class purchase implements Serializable {
-	private String name;
-	private String address;
-	private String product;
-	private int qnty;
+	private String clientid;
+	private String productid;
+	
 	private Connection conn = null;
 	private ResultSet rs = null;
 	private Statement stmt = null; 
 	String connectionURL = "jdbc:oracle:thin:@localhost:1521:XE";
-    	
+    
+	data.client newclient = new client();
+	data.product newproduct = new product();
 	public purchase(){
+		clientid = newclient.getid();
+		productid = newproduct.getid();
 		try {
 			//Connect to the database
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -31,40 +34,28 @@ public class purchase implements Serializable {
 		}
 	}
 		//Getters and Setters
-	public void setname(String name){
-		this.name = name;
+	public void clientid(String name){
+		this.clientid = clientid;
 	}
 	
-	public String getname(){
-		return name;
+	public String clientid(){
+		return clientid;
 	}
 	
-	public void setaddress(String address){
-		this.address = address;
+	public void productid(String productid){
+		this.productid = productid;
 	}
 	
-	public String getaddress(){
-		return address;
+	public String getproductid(){
+		return productid;
 	}
-	
-	public void setproduct(String product){
-		this.product = product;
-	}
-	
-	public String getproduct(){
-		return product;
-	}
-	
-	public void setqnty(int qnty){
-		this.qnty = qnty;
-	}
-	
-	public int getqnty(){
-		return qnty;
-	}	
 	
 	//Insert data into database
 public void insert() {
+	String name = newclient.getname();
+	String address = newclient.getaddress();
+	String product = newproduct.getname();
+	int qnty = newproduct.getqnty();
 	try{
 			//open connection to the database
 		DriverManager.registerDriver (new oracle.jdbc.OracleDriver());
@@ -90,3 +81,4 @@ public void insert() {
 		System.out.println("Data Input Failed!\n");
 		}	
 	}
+}
