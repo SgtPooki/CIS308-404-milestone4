@@ -51,16 +51,30 @@
 		}
 			//After submit is pressed
 		if(request.getMethod().equals("POST")){
-    		try{
 					//Delete All Data
-        		stmt.executeUpdate("DELETE FROM PURCHASE");
-        		stmt.executeUpdate("DELETE FROM CLIENT");
-        		stmt.executeUpdate("DELETE FROM PRODUCT");
-
-        		out.println("<p>Table Deleted...</p>");
-      		}catch(SQLException e){
-        		out.println("<p>Table Deletion Failed!!!</p>" + e);
-      		}
+				try{
+        			stmt.executeUpdate("DROP TABLE PURCHASE");
+        		}catch(SQLException e){
+        		out.println("<p>Purchase Did Not Exist</p>" + e);
+      			}
+        		try{
+        			stmt.executeUpdate("DROP TABLE CLIENT");
+        		}catch(SQLException e){
+        			out.println("<p>Client Did Not Exist</p>" + e);
+    			}
+        		try{
+        			stmt.executeUpdate("DROP TABLE PRODUCT");
+        		}catch(SQLException e){
+        			out.println("<p>Product Did Not Exist</p>" + e);
+    			}
+    			try{
+	    			stmt.executeUpdate("DROP SEQUENCE purchaseID");
+	    			stmt.executeUpdate("DROP SEQUENCE clientID");
+	    			stmt.executeUpdate("DROP SEQUENCE productID");
+	    			out.println("<p>Database Deleted!</p>");
+    			}catch(SQLException e){
+	    			out.println("<p>Table Deletion Failed</p>" + e);
+	    	}
   		}
 		%>
 		</div>
