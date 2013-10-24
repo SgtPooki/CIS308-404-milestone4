@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 public class purchase implements Serializable {
 	private String clientid;
 	private String productid;
+	private int qnty;
 	
 	private Connection conn = null;
 	private ResultSet rs = null;
@@ -50,6 +51,14 @@ public class purchase implements Serializable {
 		return productid;
 	}
 	
+	public void setqnty(int qnty){
+		this.qnty = qnty;
+	}
+	
+	public int getqnty(){
+		return qnty;
+	}
+	
 	//Insert data into database
 public void insert() {
 	String name = newclient.getname();
@@ -67,7 +76,7 @@ public void insert() {
 		return;
 	}
 	try{
-				//insert the values into the database	
+				//insert the values into the database
 			if(name != null && address != null && product != null){
 				stmt.executeUpdate("INSERT INTO PURCHASE VALUES ('" + name + "', '" + address + "', '" + product + "', '"  + qnty + "')");
 				stmt.executeUpdate("COMMIT");

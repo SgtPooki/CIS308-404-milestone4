@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class product implements Serializable {
 	private String id;
 	private String name;
-	private int qnty;
 	private String img;
     	
 	public product(){
@@ -33,14 +32,6 @@ public class product implements Serializable {
 	
 	public String getname(){
 		return name;
-	}
-	
-	public void setqnty(int qnty){
-		this.qnty = qnty;
-	}
-	
-	public int getqnty(){
-		return qnty;
 	}
 	
 	public void setimg(String img){
