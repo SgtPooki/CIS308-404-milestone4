@@ -12,7 +12,7 @@ import oracle.jdbc.*;
 public class Validator {
 
   private PrintWriter out;
-  private Connection con;
+  private Connection conn;
 
   public Validator() throws SQLException{
     conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");

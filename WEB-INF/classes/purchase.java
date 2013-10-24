@@ -84,8 +84,10 @@ public class purchase implements Serializable {
 			output += "Connected!\n";
 		}catch(Exception e){
 			output += "Failure at Connection!";
+
 			return output;
 		}
+		
 		try{
 				//insert the values into the database
 			if(name != null && address != null && product != null){
@@ -103,12 +105,10 @@ public class purchase implements Serializable {
 			output += clientSQL + "\n" + productSQL + "\n" + purchaseSQL + "\n";
 			output += "Data Input Failed!\n" + e.getMessage();
 			return output;
-		}		
+		}
 		
 		return output;
 	}
 }
 
-<%
-conn.close();
-%>
+
