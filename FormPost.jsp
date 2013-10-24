@@ -18,7 +18,9 @@
 		%>
 		<jsp:useBean id="template" class="data.TemplateHelper" />
 
-		<jsp:useBean id="save" scope="page" class="data.purchase" />
+		<jsp:useBean id="save" scope="page" class="data.purchase" >
+		<jsp:setProperty name="save" property="*" />
+		</jsp:useBean>
 
 		<meta charset="UTF-8">
 		<title>Form</title>
@@ -62,24 +64,15 @@
 		<%
 			//Post Method Refers to Javabean to Store Input Into Database
 		if(request.getMethod().equals("POST")){
-
-			String name = request.getParameter("name");
-			String address = request.getParameter("address");
-			String product = request.getParameter("product");
-			int qnty = Integer.parseInt(request.getParameter("qnty"));
-
-
-
-			//Call the insert method in the javabean
-			//save.insert();
 			%>
-			<%= save.insert(name, address, product, qnty, "NONE") %>
-			%>
-
+			<%-- Set up for the bean to insert into the database. --%>
 			<p>Request Processed</p>
 				<!--Link Back To The Get Method Of The Form-->
 			<p><a href ="FormPost.jsp">>RETURN TO FORM</a></p>
-		<%}%> 	
+			<%
+					//Call the insert method in the javabean
+				save.insert();
+			}  %>
 		</div>
 			<!--Sidebar Navigation Links-->
 			<%= template.getSideBarHTML() %>
