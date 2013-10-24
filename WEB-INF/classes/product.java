@@ -9,6 +9,7 @@ public class product implements Serializable {
 	private String id;
 	private String name;
 	private String img;
+	private int qnty;
     	
 	public product(){
 		id = "";
@@ -40,5 +41,13 @@ public class product implements Serializable {
 	
 	public String getimg(){
 		return img;
+	}
+	
+	public void setqnty(int qnty){
+		this.qnty = qnty;
+	}
+	
+	public int getqnty(){
+		return qnty;
 	}
 }

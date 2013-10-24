@@ -51,14 +51,6 @@ public class purchase implements Serializable {
 		return productid;
 	}
 	
-	public void setqnty(int qnty){
-		this.qnty = qnty;
-	}
-	
-	public int getqnty(){
-		return qnty;
-	}
-	
 	//Insert data into database
 public void insert() {
 	String name = newclient.getname();
