@@ -19,17 +19,24 @@ public class Validator {
   }
 
   public boolean hasTable() throws SQLException{
+      boolean purchase = false;
+      boolean product = false;
+      boolean client = false;
 
       DatabaseMetaData meta = con.getMetaData();
       ResultSet res = meta.getTables(null, null, null, new String[] {"TABLE"});
       //out.println("List of tables: "); 
       String fin = "";
       while (res.next()) {
-        if ("PURCHASE".equals(res.getString("TABLE_NAME"))) {
-          return true;
+        if (!purchase && "PURCHASE".equals(res.getString("TABLE_NAME"))) {
+          purchase = true;
+        } else if (!product && "PRODUCT".equals(res.getString("TABLE_NAME"))) {
+          product = true;
+        } else if (!client && "CLIENT".equals(res.getString("TABLE_NAME"))) {
+          client = true;
         }
       }
 
-      return false;
+      return purchase && product && client;
   }
 }
