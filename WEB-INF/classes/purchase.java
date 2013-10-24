@@ -57,11 +57,17 @@ public class purchase implements Serializable {
 	
 	//Insert data into database
 	public String insert(String name, String address, String product, int qnty, String img) {
-		
 
-		String clientSQL = "INSERT INTO CLIENT VALUES (clientID.nextval, '" + name + "', '" + address + "')";
-		String productSQL = "INSERT INTO PRODUCT VALUES (productID.nextval, '" + product + "', '" + img + "')";
-		String purchaseSQL = "INSERT INTO PURCHASE VALUES (purchaseID.nextval, '" + name + "', '" + product + "', " + qnty + ")";
+		String clientID = UUID.randomUUID().toString();
+		String productID = UUID.randomUUID().toString();
+		String purchaseID = UUID.randomUUID().toString();
+
+		output += "<br/>Attempting to save: name='" + name + "', address='" + address + "', product='" + product + "', qnty='" + Integer.toString(qnty) + "', img='" + img + "'.<br/>";
+
+
+		String clientSQL = "INSERT INTO CLIENT VALUES ('" + clientID + "', '" + name + "', '" + address + "')";
+		String productSQL = "INSERT INTO PRODUCT VALUES ('" + productID + "', '" + product + "', '" + img + "')";
+		String purchaseSQL = "INSERT INTO PURCHASE VALUES ('" + purchaseID + "', '" + clientID + "', '" + productID + "', " + qnty + ")";
 		//String name = newclient.getname();
 		//String address = newclient.getaddress();
 		//String product = newproduct.getname();
@@ -95,7 +101,6 @@ public class purchase implements Serializable {
 			}
 		} catch(Exception e){
 			output += clientSQL + "\n" + productSQL + "\n" + purchaseSQL + "\n";
-			output += "Could not save: name='" + name + "', address='" + address + "', product='" + product + "', qnty='" + Integer.toString(qnty) + "', img='" + img + "'.\n";
 			output += "Data Input Failed!\n" + e.getMessage();
 			return output;
 		}		
