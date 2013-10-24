@@ -54,8 +54,8 @@
 					//Create Tables
 
         		stmt.executeUpdate("CREATE TABLE PURCHASE(PurchaseCode VARCHAR2(36), ClientID VARCHAR2(36), ProductID VARCHAR2(36), Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseCode))");
-        		stmt.executeUpdate("CREATE TABLE CLIENT(ID VARCHAR2(36), Name VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (id))");
-        		stmt.executeUpdate("CREATE TABLE PRODUCT(ID VARCHAR2(36), Name VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (id))");
+        		stmt.executeUpdate("CREATE TABLE CLIENT(ID VARCHAR2(36), client VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (id))");
+        		stmt.executeUpdate("CREATE TABLE PRODUCT(ID VARCHAR2(36), product VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (id))");
         		
         		out.println("<p>Table Created...</p>");
       		}catch(SQLException e){

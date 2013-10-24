@@ -36,7 +36,6 @@
 		<%
 
 			PreparedStatement psSelectRecord=null;
-			ResultSet rsSelectRecord=null;
 			String sqlSelectRecord=null;
 			ResultSet purchaseResults = null;
 			//ResultSet productResults = null;
@@ -49,60 +48,19 @@
 				response.sendRedirect("CreateTable.jsp");
 				
 			} else {	
-			
-			/*
-				//Connect To The Database
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
-				sqlSelectRecord ="SELECT * FROM PURCHASE";
-				psSelectRecord=conn.prepareStatement(sqlSelectRecord);
-				purchaseResults=psSelectRecord.executeQuery();
-				while(purchaseResults != null && purchaseResults.next()) {
-					HashMap<String, String> purchase = new HashMap<String, String>(); 
-					purchase.put("purchaseCode", purchaseResults.getString("purchaseCode"));
-					purchase.put("clientID", purchaseResults.getString("clientID"));
-					purchase.put("productID", purchaseResults.getString("productID"));
-					purchase.put("qnty", purchaseResults.getString("qnty"));
-					purchases.add(purchase);
-
-				}
-
-				sqlSelectRecord ="SELECT * FROM PRODUCT";
-				psSelectRecord=conn.prepareStatement(sqlSelectRecord);
-				productResults=psSelectRecord.executeQuery();
-				for(HashMap<String, String> purchase : purchases){
-					while(productResults != null && productResults.next()) {
-						if (purchase.get("productID").equals(productResults.getString("ID"))) {
-							purchase.put("productName", productResults.getString("name"));
-							purchase.put("img", productResults.getString("img"));
-						}
-
-					}
-				}
-
-
-				sqlSelectRecord ="SELECT * FROM CLIENT";
-				psSelectRecord=conn.prepareStatement(sqlSelectRecord);
-				clientResults=psSelectRecord.executeQuery();
-				for(HashMap<String, String> purchase : purchases){
-					while(clientResults != null && clientResults.next()) {
-						if (purchase.get("clientID").equals(clientResults.getString("ID"))) {
-							purchase.put("clientName", clientResults.getString("name"));
-							purchase.put("address", clientResults.getString("address"));
-						}
-
-					}
-				}*/
 
 				/*
 				SELECT purchase.purchasecode "purchaseCode", client.id "cid", product.id "pid", purchase.qnty "qnty", product.name "productName",  client.name "clientName", client.address "address", product.img "img"
 				FROM purchase, client, product
-				WHERE purchase.clientid = client.id AND purchase.product = product.id;
+				WHERE purchase.clientid = client.id AND purchase.productid = product.id;
 
 				*/
 
 
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
-				sqlSelectRecord ="SELECT purchase.purchasecode AS 'purchaseCode', client.id AS 'cid', product.id AS 'pid', purchase.qnty AS 'qnty', product.name AS 'productName',  client.name AS 'clientName', client.address AS 'address', product.img AS 'img' FROM purchase, client, product WHERE purchase.clientid = client.id AND purchase.product = product.id;";
+				sqlSelectRecord ="SELECT purchase.qnty, product.product,  client.client, client.address, product.img" +
+				" FROM purchase, client, product" +
+				" WHERE purchase.clientid = client.id AND purchase.productid = product.id";
 				psSelectRecord=conn.prepareStatement(sqlSelectRecord);
 				purchaseResults=psSelectRecord.executeQuery();
 
@@ -125,15 +83,17 @@
 					<th>Address</th>
 					<th>Product</th>
 					<th>Quantity</th>
+					<th>Img</th>
 				</tr>
 			<%
 			while(purchaseResults != null && purchaseResults.next()){
 			%>
 				<tr>
-					<td><%=rsSelectRecord.getString("clientName")%></td>
-					<td><%=rsSelectRecord.getString("address")%></td>
-					<td><%=rsSelectRecord.getString("productName")%></td>
-					<td><%=rsSelectRecord.getString("qnty")%></td>
+					<td><%=purchaseResults.getString("client")%></td>
+					<td><%=purchaseResults.getString("address")%></td>
+					<td><%=purchaseResults.getString("product")%></td>
+					<td><%=purchaseResults.getString("qnty")%></td>
+					<td><%=purchaseResults.getString("img")%></td>
 				</tr>
 			<%
 			}
