@@ -11,6 +11,7 @@ public class bubsTag extends TagSupport{
 		try{
 			out.println("Finding New Homes For <br>Pre-Loved Baby Products");
 		}catch(Exception e){
+			
 		}
 		return super.doEndTag();
 	}

@@ -8,6 +8,7 @@
 <html>
 	<head>
 		<jsp:useBean id="template" class="data.TemplateHelper" />
+		<jsp:useBean id="purchase" class="data.purchase" />
 
 		<meta charset="UTF-8">
 		<title>Bubs Duds</title>
