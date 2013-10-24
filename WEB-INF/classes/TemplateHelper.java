@@ -17,7 +17,7 @@ public class TemplateHelper {
 		"<div class=\"sidebar\">" + 
       "<p><a href =\"index.jsp\">>Home</a></p><br>" +
       "<p><a href =\"DisplayData.jsp\">>Display Data</a></p><br>" +
-			"<p><a href =\"FormPost.jsp\">>Input Data</a></p><br>" +
+			"<p><a href =\"FormPost.jsp\">>Place Order</a></p><br>" +
 			"<p><a href =\"CreateTable.jsp\">>Create Database</a></p><br>" +
 			"<p><a href =\"NukeDatabase.jsp\">>Delete Data</a></p>" +
 		"</div>";

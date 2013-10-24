@@ -50,9 +50,15 @@
 		}
 			//Post Method Creates Tables and Sets Rows
 		if(request.getMethod().equals("POST")){
-    		try{
+    		try {
 					//Create Tables
-        		stmt.executeUpdate("CREATE TABLE PURCHASE(name VARCHAR(20), address VARCHAR(40), product VARCHAR(20), qnty INT)");
+				stmt.executeUpdate("CREATE SEQUENCE purchaseID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10;");
+				stmt.executeUpdate("CREATE SEQUENCE clientID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10;");
+				stmt.executeUpdate("CREATE SEQUENCE productID MINVALUE 1 START WITH 1 INCREMENT BY 1 CACHE 10;");
+        		stmt.executeUpdate("CREATE TABLE PURCHASE(PurchaseCode SMALLINT, ClientID SMALLINT, ProductID SMALLINT, Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseCode));");
+        		stmt.executeUpdate("CREATE TABLE CLIENT(ID SMALLINT, Name VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (id));");
+        		stmt.executeUpdate("CREATE TABLE PRODUCT(ID SMALLINT, Name VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (id));");
+        		
         		out.println("<p>Table Created...</p>");
       		}catch(SQLException e){
         		out.println("<p>Table Creation Failed!!!\n</p>" + e);
