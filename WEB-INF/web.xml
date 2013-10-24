@@ -21,6 +21,7 @@ PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
 	</servlet-mapping>
 	<welcome-file-list>  
 		<welcome-file>/index.html</welcome-file>  
+		<welcome-file>/index.jsp</welcome-file>  
 	</welcome-file-list>  
 	<session-config>  
 		<session-timeout>  
