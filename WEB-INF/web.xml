@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2.2.dtd">
+<web-app>
+ 	<servlet>
+    	<servlet-name>Form</servlet-name>
+    	<servlet-class>BubsDuds.FormPost</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Form</servlet-name>
+		<url-pattern>/FormPost</url-pattern>
+	</servlet-mapping>
+	<servlet>
+    	<servlet-name>Report</servlet-name>
+    	<servlet-class>BubsDuds.DisplayData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Report</servlet-name>
+		<url-pattern>/DisplayData</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>  
+		<welcome-file>/index.html</welcome-file>  
+	</welcome-file-list>  
+	<session-config>  
+		<session-timeout>  
+			30  
+		</session-timeout>  
+	</session-config>
+	<taglib>
+		<taglib-uri>
+			/bubsTag
+		</taglib-uri>
+		<taglib-location>
+			/WEB-INF/bubsTag.tld
+		</taglib-location>
+	</taglib>
+</web-app>
