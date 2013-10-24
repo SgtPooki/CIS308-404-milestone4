@@ -39,10 +39,10 @@
 			ResultSet rsSelectRecord=null;
 			String sqlSelectRecord=null;
 			ResultSet purchaseResults = null;
-			ResultSet purchaseResults = null;
-			ResultSet purchaseResults = null;
+			//ResultSet productResults = null;
+			//ResultSet clientResults = null;
 
-			ArrayList purchases = new ArrayList();
+			//ArrayList purchases = new ArrayList();
 
 			if (!validator.hasTable())
 			{
@@ -50,6 +50,7 @@
 				
 			} else {	
 			
+			/*
 				//Connect To The Database
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
 				sqlSelectRecord ="SELECT * FROM PURCHASE";
@@ -57,10 +58,10 @@
 				purchaseResults=psSelectRecord.executeQuery();
 				while(purchaseResults != null && purchaseResults.next()) {
 					HashMap<String, String> purchase = new HashMap<String, String>(); 
-					purchase.put('purchaseCode', purchaseResults.getString('purchaseCode'));
-					purchase.put('clientID', purchaseResults.getString('clientID'));
-					purchase.put('productID', purchaseResults.getString('productID'));
-					purchase.put('qnty', purchaseResults.getString('qnty'));
+					purchase.put("purchaseCode", purchaseResults.getString("purchaseCode"));
+					purchase.put("clientID", purchaseResults.getString("clientID"));
+					purchase.put("productID", purchaseResults.getString("productID"));
+					purchase.put("qnty", purchaseResults.getString("qnty"));
 					purchases.add(purchase);
 
 				}
@@ -70,9 +71,9 @@
 				productResults=psSelectRecord.executeQuery();
 				for(HashMap<String, String> purchase : purchases){
 					while(productResults != null && productResults.next()) {
-						if (purchase.get('productID').equals(productResults.getString('ID'))) {
-							purchase.put('productName', productResults.getString('name'));
-							purchase.put('img', productResults.getString('img'));
+						if (purchase.get("productID").equals(productResults.getString("ID"))) {
+							purchase.put("productName", productResults.getString("name"));
+							purchase.put("img", productResults.getString("img"));
 						}
 
 					}
@@ -84,13 +85,26 @@
 				clientResults=psSelectRecord.executeQuery();
 				for(HashMap<String, String> purchase : purchases){
 					while(clientResults != null && clientResults.next()) {
-						if (purchase.get('clientID').equals(clientResults.getString('ID'))) {
-							purchase.put('clientName', clientResults.getString('name'));
-							purchase.put('address', clientResults.getString('address'));
+						if (purchase.get("clientID").equals(clientResults.getString("ID"))) {
+							purchase.put("clientName", clientResults.getString("name"));
+							purchase.put("address", clientResults.getString("address"));
 						}
 
 					}
-				}
+				}*/
+
+				/*
+				SELECT purchase.purchasecode "purchaseCode", client.id "cid", product.id "pid", purchase.qnty "qnty", product.name "productName",  client.name "clientName", client.address "address", product.img "img"
+				FROM purchase, client, product
+				WHERE purchase.clientid = client.id AND purchase.product = product.id;
+
+				*/
+
+
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
+				sqlSelectRecord ="SELECT purchase.purchasecode AS 'purchaseCode', client.id AS 'cid', product.id AS 'pid', purchase.qnty AS 'qnty', product.name AS 'productName',  client.name AS 'clientName', client.address AS 'address', product.img AS 'img' FROM purchase, client, product WHERE purchase.clientid = client.id AND purchase.product = product.id;";
+				psSelectRecord=conn.prepareStatement(sqlSelectRecord);
+				purchaseResults=psSelectRecord.executeQuery();
 
 				//if client
 
@@ -113,16 +127,16 @@
 					<th>Quantity</th>
 				</tr>
 			<%
-			/*while(rsSelectRecord != null && purchaseResults.next()){
+			while(purchaseResults != null && purchaseResults.next()){
 			%>
 				<tr>
-					<td><%=rsSelectRecord.getString("name")%></td>
+					<td><%=rsSelectRecord.getString("clientName")%></td>
 					<td><%=rsSelectRecord.getString("address")%></td>
-					<td><%=rsSelectRecord.getString("product")%></td>
+					<td><%=rsSelectRecord.getString("productName")%></td>
 					<td><%=rsSelectRecord.getString("qnty")%></td>
 				</tr>
 			<%
-			}*/
+			}
 		%>
 			</table>
 		</div>
@@ -130,3 +144,7 @@
 			<%= template.getSideBarHTML() %>
 	</body>
 </html>
+
+<%
+conn.close();
+%>
