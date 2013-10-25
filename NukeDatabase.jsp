@@ -30,7 +30,7 @@
 	conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
 	stmt = conn.createStatement();
 	%>
-	<body>
+	<body><div class="bodyInner">
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
 		<h2><easy:bubsTag /></h2>
@@ -76,7 +76,7 @@
   		}
 		%>
 		</div>
-	</body>
+	</div></body>
 </html>
 
 <%

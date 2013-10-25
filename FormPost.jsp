@@ -28,7 +28,7 @@
 	<%@ page import="java.servlet.*"%>
 	<%@ page import="java.net.URL" %>
 	<%@ page import="oracle.jdbc.OracleResultSetMetaData" %>
-	<body>
+	<body><div class="bodyInner">
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
 		<h2><easy:bubsTag /></h2>
@@ -100,5 +100,5 @@
 			<p><a href ="FormPost.jsp">>RETURN TO FORM</a></p>
 		<%}%> 	
 		</div>
-	</body>
+	</div></body>
 </html>

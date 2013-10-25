@@ -17,22 +17,24 @@
 		</style>
 	</head>
 	<body>
-		<h1>Bubs Duds</h1>
-		<h2>Finding New Homes For <br>Pre-Loved Baby Products</h2>
-		<!-- Navigation Links-->
-		<%= template.getSideBarHTML() %>
-		<div class="main">
- 			<p class="intro">Bubs Duds offers 'good as new' baby
- 			products without the new price tags from the comfort
- 			of your own home.</p>
- 			<p>We were often asked where we
- 			purchased various items, and people were always
- 			surprised when we told them they were secondhand,
- 			because they looked brand new.</p>
- 			<p>We accept telephone, fax and online orders, and
- 			currently 98 per cent of our orders are placed online
- 			via our secure payment gateway.</p>
- 			<p>Check out our site and see what we have to offer!</p>
+		<div class="bodyInner">
+			<h1>Bubs Duds</h1>
+			<h2>Finding New Homes For <br>Pre-Loved Baby Products</h2>
+			<!-- Navigation Links-->
+			<%= template.getSideBarHTML() %>
+			<div class="main">
+	 			<p class="intro">Bubs Duds offers 'good as new' baby
+	 			products without the new price tags from the comfort
+	 			of your own home.</p>
+	 			<p>We were often asked where we
+	 			purchased various items, and people were always
+	 			surprised when we told them they were secondhand,
+	 			because they looked brand new.</p>
+	 			<p>We accept telephone, fax and online orders, and
+	 			currently 98 per cent of our orders are placed online
+	 			via our secure payment gateway.</p>
+	 			<p>Check out our site and see what we have to offer!</p>
+			</div>
 		</div>
 	</body>
 </html>
