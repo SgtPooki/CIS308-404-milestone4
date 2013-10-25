@@ -21,6 +21,7 @@
 	<%@ page import="java.net.URL" %>
 	<%@ page import="java.sql.*" %>
 	<%@ page import="oracle.jdbc.OracleResultSetMetaData" %>
+	<%@ page import="java.util.UUID" %>
 		<!--Set Variables for java code-->
 	<%! Connection conn = null; %>
 	<%! Statement stmt = null; %>
@@ -50,40 +51,50 @@
 		}
 			//Post Method Creates Tables and Sets Rows
 		if(request.getMethod().equals("POST")){
+    		try {
 					//Create Tables
-				try{
-        		stmt.executeUpdate("CREATE TABLE PURCHASE(PURCHASEID VARCHAR2(36), ClientID VARCHAR2(36), ProductID VARCHAR2(36), Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseID))");
-    		}catch(SQLException e){
-	    		out.println("Purchase Table Creation Failed" + e);
-    		}
-        		try{
-        		stmt.executeUpdate("CREATE TABLE CLIENT(CLIENTID VARCHAR2(4), client VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (clientid))");
-			}catch(SQLException e){
-	    		out.println("Client Table Creation Failed" + e);
-    		}
-				try{
-        		stmt.executeUpdate("CREATE TABLE PRODUCT(PRODUCTID VARCHAR2(4), product VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (productid))");
-        	}catch(SQLException e){
-	    		out.println("Client Table Creation Failed" + e);
-    		}
-    			try{	
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0001', 'Bath', 'Bath.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0002', 'Robe', 'Robe.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0003', 'Bouncer', 'Bouncer.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0004', 'Pouch', 'Pouch.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0005', 'Powder', 'Powder.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0006', 'TraySeat', 'TraySeat.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0007', 'BathPackage', 'BathPackage.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0008', 'Beenie', 'Beenie.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0009', 'Blanket', 'Blanket.jpg')");
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0010', 'CarSeat', 'CarSeat.jpg')");
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0011', 'DryingMat', 'DryingMat.jpg')");
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0012', 'Exersaucer', 'Exersaucer.jpg')");
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0013', 'Stroller', 'Stroller.jpg')");
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0014', 'Shoes', 'Shoes.jpg')");
-        		out.println("<p>Database Created...</p>");
+
+        		stmt.executeUpdate("CREATE TABLE PURCHASE(PurchaseCode VARCHAR2(36), ClientID VARCHAR2(36), ProductID VARCHAR2(36), Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseCode))");
+        		stmt.executeUpdate("CREATE TABLE CLIENT(clientID VARCHAR2(36), client VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (clientID))");
+        		stmt.executeUpdate("CREATE TABLE PRODUCT(productID VARCHAR2(36), product VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (productID))");
+        		
+        		out.println("<p>Tables Created...</p>");
       		}catch(SQLException e){
-        		out.println("<p>Insert Failed!!!\n</p>" + e);
+        		out.println("<p>Table Creation Failed!!!\n</p>" + e);
+      		}
+			try{
+				String productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bath', 'Bath.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Robe', 'Robe.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bouncer', 'Bouncer.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Pouch', 'Pouch.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Powder', 'Powder.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'TraySeat', 'TraySeat.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'BathPackage', 'BathPackage.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Beenie', 'Beenie.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Blanket', 'Blanket.jpg')");
+        		productID = UUID.randomUUID().toString();
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'CarSeat', 'CarSeat.jpg')");
+        		productID = UUID.randomUUID().toString();
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'DryingMat', 'DryingMat.jpg')");
+        		productID = UUID.randomUUID().toString();
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Exersaucer', 'Exersaucer.jpg')");
+        		productID = UUID.randomUUID().toString();
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Stroller', 'Stroller.jpg')");
+        		productID = UUID.randomUUID().toString();
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Shoes', 'Shoes.jpg')");
+
+        		out.println("<p>Products inserted...</p>");
+      		}catch(SQLException e){
+        		out.println("<p>Products insertion failed!!!\n</p>" + e);
       		}
   		}
 		%>

@@ -10,23 +10,23 @@ import java.sql.ResultSet;
 
 		//All of the object attributes
 public class client implements Serializable {
-	private String clientid;
+	private String id;
 	private String name;
 	private String address;
 
 	public client(){
-		clientid = "";
+		id = "";
 		name = "";
 		address = "";
 	}
 
 			//Getters and Setters
-	public void setclientid(String clientid){
-		this.clientid = clientid;
+	public void setid(String id){
+		this.id = id;
 	}
 	
-	public String getclientid(){
-		return clientid;
+	public String getid(){
+		return id;
 	}
 		
 	public void setname(String name){

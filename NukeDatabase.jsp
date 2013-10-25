@@ -55,19 +55,20 @@
 			try{
     			stmt.executeUpdate("DROP TABLE PURCHASE");
     		}catch(SQLException e){
-    		out.println("<p>Purchase Did Not Exist</p>");
+    		out.println("<p>Purchase Did Not Exist</p>" + e);
   			}
     		try{
     			stmt.executeUpdate("DROP TABLE CLIENT");
     		}catch(SQLException e){
-    			out.println("<p>Client Did Not Exist</p>");
+    			out.println("<p>Client Did Not Exist</p>" + e);
 			}
     		try{
     			stmt.executeUpdate("DROP TABLE PRODUCT");
     		}catch(SQLException e){
-    			out.println("<p>Product Did Not Exist</p>");
+    			out.println("<p>Product Did Not Exist</p>" + e);
 			}
-			out.println("<p>Database Deleted!</p>");
+
+			out.println("<p>Tables deleted successfully</p>");
   		}
 		%>
 		</div>

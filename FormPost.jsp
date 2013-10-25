@@ -9,13 +9,7 @@
 	<head>
 
 		<jsp:useBean id="validator" class="data.Validator"/>
-		<%
-			if (!validator.hasTable())
-			{
-				response.sendRedirect("CreateTable.jsp");
-				
-			}
-		%>
+
 		<jsp:useBean id="template" class="data.TemplateHelper" />
 
 		<jsp:useBean id="save" scope="page" class="data.purchase" />
@@ -31,6 +25,9 @@
 	<%@ page import="java.servlet.*"%>
 	<%@ page import="java.net.URL" %>
 	<%@ page import="java.sql.*" %>
+	<%@ page import="java.servlet.*"%>
+	<%@ page import="java.net.URL" %>
+	<%@ page import="oracle.jdbc.OracleResultSetMetaData" %>
 	<body>
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
@@ -39,27 +36,45 @@
 		<div class="main">
 		<h3>FORM</h3>
 			<!--Get Method Displays The Form-->
-		<%if(request.getMethod().equals("GET")){ %>
-		<form name="FormPost" method="post" action='FormPost.jsp'>
-			<p>Name:</p>
-			<input type='text' name='name' maxlength='20' id='name'>
-			<p>Address:</p>
-			<input type='text' name='address' maxlength='20' id='address'>
-			<p>Product:</p>
-			<select name='product' id='product'>
-				<option value="Shoes">Shoes</option>
-				<option value="Toy">Toy</option>
-				<option value="Blanket">Blanket</option>
-				<option value="Clothes">Clothes</option>
-				<option value="Pack">Pack & Play</option>
-				<option value="Crib">Crib</option>
-			</select>
-			<p>Quantity:</p>
-			<input type='number' min="0" name='qnty' maxlength='2' id='qnty'>
-			<p><input type='submit' value='Submit'></p>
-		</form>
-		<% } %>
-		<%
+		<%if(request.getMethod().equals("GET")){
+
+			if (!validator.hasTable())
+			{
+				response.sendRedirect("CreateTable.jsp");
+				
+			} else {%>
+				<form name="FormPost" method="post" action='FormPost.jsp'>
+					<p>Name:</p>
+					<input type='text' name='name' maxlength='20' id='name'>
+					<p>Address:</p>
+					<input type='text' name='address' maxlength='20' id='address'>
+					<p>Product:</p>
+					<select name='product' id='product'>
+						<%
+
+						Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
+						PreparedStatement psSelectRecord=null;
+						String sqlSelectRecord=null;
+						ResultSet productResults = null;
+
+						sqlSelectRecord ="SELECT product FROM product";
+						psSelectRecord=conn.prepareStatement(sqlSelectRecord);
+						productResults=psSelectRecord.executeQuery();
+
+						while(productResults != null && productResults.next()){
+						    String product = productResults.getString("product");
+						%>
+							<option value="<%=product%>"><%=product%></option>
+						<%
+						}
+						%>
+					</select>
+					<p>Quantity:</p>
+					<input type='number' min="0" name='qnty' maxlength='2' id='qnty'>
+					<p><input type='submit' value='Submit'></p>
+				</form>
+		<%  }
+		}
 			//Post Method Refers to Javabean to Store Input Into Database
 		if(request.getMethod().equals("POST")){
 
@@ -73,7 +88,7 @@
 			//Call the insert method in the javabean
 			//save.insert();
 			%>
-			<%= save.insert(name, address, product, qnty, "NONE") %>
+			<%= save.insert(name, address, product, qnty) %>
 			%>
 
 			<p>Request Processed</p>

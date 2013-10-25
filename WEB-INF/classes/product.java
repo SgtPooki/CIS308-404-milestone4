@@ -6,23 +6,25 @@ import java.io.Serializable;
 
 		//All of the object attributes
 public class product implements Serializable {
-	private String productid;
+	private String id;
 	private String name;
 	private String img;
+	private int qnty;
     	
 	public product(){
-		productid = "";
+		id = "";
 		name = "";
+		qnty = 0;
 		img = "";
 	}
 
 		//Getters and Setters
-	public void setproductid(String productid){
-		this.productid = productid;
+	public void setid(String id){
+		this.id = id;
 	}
 	
-	public String getproductid(){
-		return productid;
+	public String getid(){
+		return id;
 	}
 
 	public void setname(String name){
@@ -39,5 +41,13 @@ public class product implements Serializable {
 	
 	public String getimg(){
 		return img;
+	}
+	
+	public void setqnty(int qnty){
+		this.qnty = qnty;
+	}
+	
+	public int getqnty(){
+		return qnty;
 	}
 }
