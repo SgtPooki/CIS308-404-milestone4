@@ -38,24 +38,18 @@
 			PreparedStatement psSelectRecord=null;
 			String sqlSelectRecord=null;
 			ResultSet purchaseResults = null;
-			//ResultSet productResults = null;
-			//ResultSet clientResults = null;
+			ResultSet productResults = null;
+			ResultSet clientResults = null;
 
-			//ArrayList purchases = new ArrayList();
+			ArrayList purchases = new ArrayList();
 
 			if (!validator.hasTable())
 			{
 				response.sendRedirect("CreateTable.jsp");
-				
 			} else {	
-
-				/*
 				SELECT purchase.purchasecode "purchaseCode", client.id "cid", product.id "pid", purchase.qnty "qnty", product.name "productName",  client.name "clientName", client.address "address", product.img "img"
 				FROM purchase, client, product
 				WHERE purchase.clientid = client.id AND purchase.productid = product.id;
-
-				*/
-
 
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "student1","pass");
 				sqlSelectRecord ="SELECT purchase.qnty, product.product,  client.client, client.address, product.img" +

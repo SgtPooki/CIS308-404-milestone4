@@ -13,7 +13,7 @@ import java.util.UUID;
 		//All of the object attributes
 public class purchase implements Serializable {
 	private String output = "";
-	private String clientid;
+	private String name;
 	private String productid;
 	private int qnty;
 	
@@ -24,9 +24,11 @@ public class purchase implements Serializable {
     
 	data.client newclient = new client();
 	data.product newproduct = new product();
+	
 	public purchase(){
-		clientid = newclient.getid();
-		productid = newproduct.getid();
+		name = newclient.getname();
+		productid = newproduct.getproductid();
+
 		try {
 			//Connect to the database
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -37,12 +39,12 @@ public class purchase implements Serializable {
 		}
 	}
 		//Getters and Setters
-	public void clientid(String name){
-		this.clientid = clientid;
+	public void clientname(String name){
+		this.name = name;
 	}
 	
-	public String clientid(){
-		return clientid;
+	public String clientname(){
+		return name;
 	}
 	
 	public void productid(String productid){
@@ -62,17 +64,13 @@ public class purchase implements Serializable {
 		String productID = UUID.randomUUID().toString();
 		String purchaseID = UUID.randomUUID().toString();
 
-		output += "<br/>Attempting to save: name='" + name + "', address='" + address + "', product='" + product + "', qnty='" + Integer.toString(qnty) + "', img='" + img + "'.<br/>";
+		output += "<br/>Attempting to save: name='" + name + "', address='" + address + "', product='" + product + "', qnty='" + Integer.toString(qnty) + "'.<br/>";
 
 
 		String clientSQL = "INSERT INTO CLIENT VALUES ('" + clientID + "', '" + name + "', '" + address + "')";
-		String productSQL = "INSERT INTO PRODUCT VALUES ('" + productID + "', '" + product + "', '" + img + "')";
 		String purchaseSQL = "INSERT INTO PURCHASE VALUES ('" + purchaseID + "', '" + clientID + "', '" + productID + "', " + qnty + ")";
-		//String name = newclient.getname();
-		//String address = newclient.getaddress();
-		//String product = newproduct.getname();
-		//int qnty = newproduct.getqnty();
-		//String img = "";
+		String name = newclient.getname();
+		String address = newclient.getaddress();
 
 				//output += "Saved: name='" + name + "', address='" + address + "', product='" + product + "', qnty='" + Integer.toString(qnty) + "', img='" + img + "'.";
 				//return output;
@@ -106,7 +104,6 @@ public class purchase implements Serializable {
 			output += "Data Input Failed!\n" + e.getMessage();
 			return output;
 		}
-		
 		return output;
 	}
 }

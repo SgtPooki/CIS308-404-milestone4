@@ -50,16 +50,40 @@
 		}
 			//Post Method Creates Tables and Sets Rows
 		if(request.getMethod().equals("POST")){
-    		try {
 					//Create Tables
-
-        		stmt.executeUpdate("CREATE TABLE PURCHASE(PurchaseCode VARCHAR2(36), ClientID VARCHAR2(36), ProductID VARCHAR2(36), Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseCode))");
-        		stmt.executeUpdate("CREATE TABLE CLIENT(ID VARCHAR2(36), client VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (id))");
-        		stmt.executeUpdate("CREATE TABLE PRODUCT(ID VARCHAR2(36), product VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (id))");
-        		
-        		out.println("<p>Table Created...</p>");
+				try{
+        		stmt.executeUpdate("CREATE TABLE PURCHASE(PURCHASEID VARCHAR2(36), ClientID VARCHAR2(36), ProductID VARCHAR2(36), Qnty SMALLINT, CONSTRAINT purchase_pk PRIMARY KEY (PurchaseID))");
+    		}catch(SQLException e){
+	    		out.println("Purchase Table Creation Failed" + e);
+    		}
+        		try{
+        		stmt.executeUpdate("CREATE TABLE CLIENT(CLIENTID VARCHAR2(4), client VARCHAR2(100), Address VARCHAR2(100), CONSTRAINT client_pk PRIMARY KEY (clientid))");
+			}catch(SQLException e){
+	    		out.println("Client Table Creation Failed" + e);
+    		}
+				try{
+        		stmt.executeUpdate("CREATE TABLE PRODUCT(PRODUCTID VARCHAR2(4), product VARCHAR2(100), Img VARCHAR2(100), CONSTRAINT product_pk PRIMARY KEY (productid))");
+        	}catch(SQLException e){
+	    		out.println("Client Table Creation Failed" + e);
+    		}
+    			try{	
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0001', 'Bath', 'Bath.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0002', 'Robe', 'Robe.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0003', 'Bouncer', 'Bouncer.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0004', 'Pouch', 'Pouch.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0005', 'Powder', 'Powder.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0006', 'TraySeat', 'TraySeat.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0007', 'BathPackage', 'BathPackage.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0008', 'Beenie', 'Beenie.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0009', 'Blanket', 'Blanket.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0010', 'CarSeat', 'CarSeat.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0011', 'DryingMat', 'DryingMat.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0012', 'Exersaucer', 'Exersaucer.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0013', 'Stroller', 'Stroller.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('0014', 'Shoes', 'Shoes.jpg')");
+        		out.println("<p>Database Created...</p>");
       		}catch(SQLException e){
-        		out.println("<p>Table Creation Failed!!!\n</p>" + e);
+        		out.println("<p>Insert Failed!!!\n</p>" + e);
       		}
   		}
 		%>
