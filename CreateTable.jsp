@@ -35,7 +35,11 @@
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
 		<h2><easy:bubsTag /></h2>
-			<!--Main Class Displays Database Information-->
+
+		<!-- Navigation Links-->
+		<%= template.getSideBarHTML() %>
+		
+		<!--Main Class Displays Database Information-->
 		<div class="main">
 		<h3>Create Table</h3>
 		<%
@@ -99,9 +103,6 @@
   		}
 		%>
 		</div>
-				<!--Sidebar Navigation Links-->
-
-			<%= template.getSideBarHTML() %>
 	</body>
 </html>
 

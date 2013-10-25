@@ -32,7 +32,11 @@
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
 		<h2><easy:bubsTag /></h2>
-			<!--Main Class Accepts User Input-->
+
+		<!-- Navigation Links-->
+		<%= template.getSideBarHTML() %>
+		
+		<!--Main Class Accepts User Input-->
 		<div class="main">
 		<h3>FORM</h3>
 			<!--Get Method Displays The Form-->
@@ -96,7 +100,5 @@
 			<p><a href ="FormPost.jsp">>RETURN TO FORM</a></p>
 		<%}%> 	
 		</div>
-			<!--Sidebar Navigation Links-->
-			<%= template.getSideBarHTML() %>
 	</body>
 </html>

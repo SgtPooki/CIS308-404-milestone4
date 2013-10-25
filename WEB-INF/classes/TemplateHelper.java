@@ -18,11 +18,11 @@ public class TemplateHelper {
 
     return "<link href=\"template.css\" rel=\"stylesheet\">" +
     "<div class=\"sidebar\">" + 
-    "<p><a href=\"index.jsp\" class=\"button\">HOME</a></p><br>" + 
-    "<p><a href=\"DisplayData.jsp\" class=\"button\">Display Data</a></p><br>" + 
-    "<p><a href=\"FormPost.jsp\" class=\"button\">Place Order</a></p><br>" + 
-    "<p><a href=\"CreateTable.jsp\" class=\"button\">Create Database</a></p><br>" + 
-    "<p><a href=\"NukeDatabase.jsp\" class=\"button\">Delete Data</a></p><br>" + 
+    "<a href=\"index.jsp\" class=\"button\">Home</a>" + 
+    "<a href=\"DisplayData.jsp\" class=\"button\">Display Data</a>" + 
+    "<a href=\"FormPost.jsp\" class=\"button\">Place Order</a>" + 
+    "<a href=\"CreateTable.jsp\" class=\"button\">Create Database</a>" + 
+    "<a href=\"NukeDatabase.jsp\" class=\"button\">Delete Data</a>" + 
     "</div>";
   }
 }

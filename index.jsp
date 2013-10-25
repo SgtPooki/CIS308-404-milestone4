@@ -19,6 +19,8 @@
 	<body>
 		<h1>Bubs Duds</h1>
 		<h2>Finding New Homes For <br>Pre-Loved Baby Products</h2>
+		<!-- Navigation Links-->
+		<%= template.getSideBarHTML() %>
 		<div class="main">
  			<p class="intro">Bubs Duds offers 'good as new' baby
  			products without the new price tags from the comfort
@@ -32,7 +34,5 @@
  			via our secure payment gateway.</p>
  			<p>Check out our site and see what we have to offer!</p>
 		</div>
-			<!--Sidebar Navigation Links-->
-			<%= template.getSideBarHTML() %>
 	</body>
 </html>

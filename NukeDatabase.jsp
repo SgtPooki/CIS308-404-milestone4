@@ -34,7 +34,11 @@
 			<!--Custom Tag Header-->
 		<h1>Bubs Duds</h1>
 		<h2><easy:bubsTag /></h2>
-			<!--Main Class removes all data from the tables-->
+		
+		<!-- Navigation Links-->
+		<%= template.getSideBarHTML() %>
+
+		<!--Main Class removes all data from the tables-->
 		<div class="main">
 		<h3>Clear Database</h3>
 		<%
@@ -72,9 +76,6 @@
   		}
 		%>
 		</div>
-			<!--Sidebar Navigation Links-->
-
-			<%= template.getSideBarHTML() %>
 	</body>
 </html>
 
