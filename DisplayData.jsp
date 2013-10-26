@@ -96,7 +96,7 @@
 					<td><%=purchaseResults.getString("address")%></td>
 					<td><%=purchaseResults.getString("product")%></td>
 					<td><%=purchaseResults.getString("qnty")%></td>
-					<td><img src="productPix/<%=purchaseResults.getString("img")%>" alt="img" width="100px" height="100px"></td>
+					<td><img src=<%=purchaseResults.getString("img")%> alt="img" width="100px" height="100px"></td>
 				</tr>
 			<%
 			}
