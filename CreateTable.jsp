@@ -68,33 +68,33 @@
       		}
 			try{
 				String productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bath', 'Bath.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bath', '\"productPix/Bath.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Robe', 'Robe.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Robe', '\"productPix/Robe.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bouncer', 'Bouncer.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Bouncer', '\"productPix/Bouncer.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Pouch', 'Pouch.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Pouch', '\"productPix/Pouch.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Powder', 'Powder.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Powder', '\"productPix/Powder.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'TraySeat', 'TraySeat.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'TraySeat', '\"productPix/TraySeat.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'BathPackage', 'BathPackage.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'BathPackage', '\"productPix/BathPackage.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Beenie', 'Beenie.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Beenie', '\"productPix/Beenie.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Blanket', 'Blanket.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Blanket', '\"productPix/Blanket.jpg\"')");
         		productID = UUID.randomUUID().toString();
-        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'CarSeat', 'CarSeat.jpg')");
+        		stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'CarSeat', '\"productPix/CarSeat.jpg\"')");
         		productID = UUID.randomUUID().toString();
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'DryingMat', 'DryingMat.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'DryingMat', '\"productPix/DryingMat.jpg\"')");
         		productID = UUID.randomUUID().toString();
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Exersaucer', 'Exersaucer.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Exersaucer', '\"productPix/Exersaucer.jpg\"')");
         		productID = UUID.randomUUID().toString();
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Stroller', 'Stroller.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Stroller', '\"productPix/Stroller.jpg\"')");
         		productID = UUID.randomUUID().toString();
-				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Shoes', 'Shoes.jpg')");
+				stmt.executeUpdate("INSERT INTO PRODUCT VALUES('" + productID + "', 'Shoes', '\"productPix/Shoes.jpg\"')");
 
         		out.println("<p>Products inserted...</p>");
       		}catch(SQLException e){
